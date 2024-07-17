@@ -42,7 +42,7 @@ class MainActivity : BaseActivity() {
         binding.viewPagerSlider.adapter = SliderAdapter(images, binding.viewPagerSlider)
         binding.viewPagerSlider.clipToPadding = false
         binding.viewPagerSlider.clipChildren = false
-        binding.viewPagerSlider.offscreenPageLimit = 3
+        binding.viewPagerSlider.offscreenPageLimit = images.size
         binding.viewPagerSlider.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
         val compositePageTransform = CompositePageTransformer().apply {

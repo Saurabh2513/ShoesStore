@@ -17,7 +17,7 @@ import com.example.shoesstore.model.SliderModel
 class DetailActivity : BaseActivity() {
     private lateinit var binding: ActivityDetailBinding
     private lateinit var item: ItemModel
-    var numberOder = 1
+    private var numberOder = 1
     private lateinit var managmentCart: ManagmentCart
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

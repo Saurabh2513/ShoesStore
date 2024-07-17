@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.IntroActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/foreground"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/splashscreenshoea" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -32,7 +38,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="@string/intro_title"
+                android:fontFamily="@font/abril_fatface"
+                android:textColor="@color/white"
+                android:text="Step into your style \n A world of shoes."
                 android:textAlignment="center"
                 android:textSize="31sp" />
 
@@ -44,7 +52,7 @@
                 android:lineSpacingExtra="10dp"
                 android:text="@string/intro_text"
                 android:textAlignment="center"
-                android:textColor="@color/grey" />
+                android:textColor="@color/white" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/startBtn"
@@ -54,7 +62,9 @@
                 android:layout_margin="32dp"
                 android:text="Let's Get Started"
                 android:textSize="18dp"
+                android:fontFamily="@font/abril_fatface"
                 android:textColor="@color/white"
+                android:textStyle="bold"
                 android:background="@drawable/purple_bg"
                 />
 
@@ -63,6 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
+                android:fontFamily="@font/abril_fatface"
                 android:textAlignment="center"
                 android:text="@string/intro_signin" />
         </LinearLayout>
