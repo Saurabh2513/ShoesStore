@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="1"
-    tools:context=".activity.MainActivity">
+    tools:context=".view.activity.MainActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -46,15 +46,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Welcome Back"
-                        android:textColor="@color/grey" />
+                        android:textStyle="bold"
+                        android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/userName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="sagar"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
+                        android:textColor="@color/white"
 
                         />
                 </LinearLayout>
@@ -95,7 +96,7 @@
                     android:layout_height="160dp"
                     android:paddingStart="24dp"
                     android:paddingEnd="24dp"
-
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -158,8 +159,10 @@
                     android:paddingEnd="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ProgressBar
                     android:id="@+id/progressBarBrand"
@@ -226,49 +229,26 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="65dp"
             android:layout_gravity="bottom"
-            android:background="@drawable/purple_bg">
+            android:background="@drawable/purple_bg_top_corner">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="8dp">
+                android:layout_gravity="center"
+                android:gravity="center">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/explorerImg"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:src="@drawable/btn_1" />
-
-                    <TextView
-                        android:id="@+id/explorerText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Explorer"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/cartBtn"
@@ -279,8 +259,8 @@
 
                     <ImageView
                         android:id="@+id/cartImg"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:src="@drawable/btn_2" />
@@ -293,10 +273,11 @@
                         android:text="Cart"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="10sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/wishlistBtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
@@ -304,8 +285,8 @@
 
                     <ImageView
                         android:id="@+id/imageView41"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:src="@drawable/btn_3" />
@@ -318,10 +299,11 @@
                         android:text="WishList"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="10sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/myorderBtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
@@ -329,8 +311,8 @@
 
                     <ImageView
                         android:id="@+id/imageView01"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:src="@drawable/btn_4" />
@@ -343,10 +325,11 @@
                         android:text="My Order"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="10sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/profileBtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
@@ -354,8 +337,8 @@
 
                     <ImageView
                         android:id="@+id/imageView4"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:src="@drawable/btn_5" />
@@ -368,7 +351,7 @@
                         android:text="Profile"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="10sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
             </LinearLayout>
 

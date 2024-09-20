@@ -1,4 +1,4 @@
-package com.example.shoesstore.activity
+package com.example.shoesstore.view.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,23 +11,28 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.shoesstore.R
 import com.example.shoesstore.databinding.ActivitySplashScreenBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class SplashScreenActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySplashScreenBinding
-
+    private val splashTimeOut: Long = 1000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, IntroActivity::class.java))
+        Handler().postDelayed({
+            val auth = FirebaseAuth.getInstance()
+            val currentUser = auth.currentUser
+            if (currentUser != null) {
+                val mainIntent = Intent(this, MainActivity::class.java)
+                startActivity(mainIntent)
+            } else {
+                val loginIntent = Intent(this, IntroActivity::class.java)
+                startActivity(loginIntent)
+            }
             finish()
-        },4000)
+        }, splashTimeOut)
     }
 }

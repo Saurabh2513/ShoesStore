@@ -1,4 +1,4 @@
-    package com.example.shoesstore.activity
+    package com.example.shoesstore.view.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,8 +12,8 @@ import com.example.shoesstore.databinding.ActivityIntroBinding
         setContentView(binding.root)
 
             binding.startBtn.setOnClickListener {
-                startActivity(Intent(this@IntroActivity, MainActivity::class.java))
-            }
-
+                startActivity(Intent(this@IntroActivity, LogInActivity::class.java))
+                finish()
+        }
     }
 }

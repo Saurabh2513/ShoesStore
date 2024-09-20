@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.request.RequestOptions
-import com.example.shoesstore.activity.DetailActivity
+import com.example.shoesstore.view.activity.DetailActivity
 
 import com.example.shoesstore.databinding.ViewholderRecommendedBinding
 import com.example.shoesstore.model.ItemModel
@@ -40,7 +40,7 @@ class PopularAdapter(val items: MutableList<ItemModel>) :
         Glide.with(holder.itemView.context).load(items[position].picUrl[0]).apply(requestOptions).into(holder.binding.pic)
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context,DetailActivity::class.java)
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
             intent.putExtra("object",items[position])
             holder.itemView.context.startActivity(intent)
         }

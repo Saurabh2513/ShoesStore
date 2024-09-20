@@ -1,10 +1,9 @@
-package com.example.shoesstore.activity
+package com.example.shoesstore.view.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.shoesstore.adapter.ColorAdapter
 import com.example.shoesstore.adapter.SizeAdapter
 import com.example.shoesstore.adapter.SliderAdapter
@@ -12,6 +11,7 @@ import com.example.shoesstore.databinding.ActivityDetailBinding
 import com.example.shoesstore.helper.ManagmentCart
 import com.example.shoesstore.model.ItemModel
 import com.example.shoesstore.model.SliderModel
+import com.example.shoesstore.view.bottomnavitem.CartActivity
 
 
 class DetailActivity : BaseActivity() {
@@ -33,7 +33,8 @@ class DetailActivity : BaseActivity() {
     }
 
     private fun initBottumMenu() {
-        binding.cartBtn.setOnClickListener { startActivity(Intent(this@DetailActivity,CartActivity::class.java)) }
+        binding.cartBtn.setOnClickListener { startActivity(Intent(this@DetailActivity,
+            CartActivity::class.java)) }
     }
 
     private fun initList() {
@@ -85,7 +86,7 @@ class DetailActivity : BaseActivity() {
         }
         binding.backBtn.setOnClickListener { finish() }
         binding.cartBtn.setOnClickListener {
-            startActivity(Intent(this@DetailActivity,CartActivity::class.java))
+            startActivity(Intent(this@DetailActivity, CartActivity::class.java))
         }
     }
 }

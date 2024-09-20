@@ -1,4 +1,4 @@
-package com.example.shoesstore.activity
+package com.example.shoesstore.view.bottomnavitem
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import com.example.shoesstore.adapter.CartAdapter
 import com.example.shoesstore.databinding.ActivityCartBinding
 import com.example.shoesstore.helper.ChangeNumberItemsListener
 import com.example.shoesstore.helper.ManagmentCart
+import com.example.shoesstore.view.activity.BaseActivity
 
 class CartActivity : BaseActivity() {
     private lateinit var binding: ActivityCartBinding
@@ -46,10 +47,10 @@ class CartActivity : BaseActivity() {
         val itemTotal = Math.round(managementCart.getTotalFee() * 100) / 100
 
         with(binding) {
-            totalFeeTxt.text = "$$itemTotal"
-            taxTxt.text = "$$tax"
-            deliveryTxt.text = "$$delivery"
-            totalTxt.text = "$$total"
+            totalFeeTxt.text = "RS:$itemTotal"
+            taxTxt.text = "RS:$tax"
+            deliveryTxt.text = "RS:$delivery"
+            totalTxt.text = "RS:$total"
         }
 
     }

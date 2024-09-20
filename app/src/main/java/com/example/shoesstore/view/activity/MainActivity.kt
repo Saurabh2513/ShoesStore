@@ -1,5 +1,7 @@
-package com.example.shoesstore.activity
+package com.example.shoesstore.view.activity
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -13,21 +15,70 @@ import com.example.shoesstore.adapter.PopularAdapter
 import com.example.shoesstore.adapter.SliderAdapter
 import com.example.shoesstore.databinding.ActivityMainBinding
 import com.example.shoesstore.model.SliderModel
+import com.example.shoesstore.network.SharedPreferencesHelper
+import com.example.shoesstore.view.bottomnavitem.CartActivity
+import com.example.shoesstore.view.bottomnavitem.ProfileActivity
 import com.example.shoesstore.viewpmodel.MainViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+
 
 class MainActivity : BaseActivity() {
     private val viewModel = MainViewModel()
     private lateinit var binding: ActivityMainBinding
+    private lateinit var sharedPreferencesHelper: SharedPreferencesHelper
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
+        sharedPreferencesHelper = SharedPreferencesHelper(this)
+
+
         initBanner()
         initBrand()
         initPopular()
+        bottomNavClick()
+
+
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
+        val currentUser = auth.currentUser
+        currentUser?.let {
+            db.collection("users").document(it.uid)
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        val email = document.getString("email")
+                        binding.userName.text = "User Email: $email"
+                    } else {
+                        binding.userName.text = "No such user"
+                    }
+                }
+                .addOnFailureListener {
+                    binding.userName.text = "Error getting user"
+                }
+        }
 
     }
 
+    private fun bottomNavClick() {
+        binding.profileBtn.setOnClickListener {
+            val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+        binding.cartBtn.setOnClickListener {
+            val intent = Intent(this@MainActivity, CartActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
     private fun initBanner() {
         binding.progressBarBanner.visibility = View.VISIBLE
@@ -67,10 +118,11 @@ class MainActivity : BaseActivity() {
         })
         viewModel.loadBrand()
     }
+
     private fun initPopular() {
         binding.progressBarPopular.visibility = View.VISIBLE
         viewModel.popular.observe(this, Observer {
-            binding.viewPupolar.layoutManager = GridLayoutManager(this@MainActivity,2)
+            binding.viewPupolar.layoutManager = GridLayoutManager(this@MainActivity, 2)
             binding.viewPupolar.adapter = PopularAdapter(it)
             binding.progressBarPopular.visibility = View.GONE
 
