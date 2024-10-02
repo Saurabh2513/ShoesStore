@@ -44,7 +44,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/abril_fatface"
                 android:text="@string/sign_up"
-                android:textColor="@color/yellow"
+                android:textColor="@color/darkGrey"
                 android:textSize="25sp" />
 
             <LinearLayout
