@@ -94,14 +94,14 @@ class MainActivity : BaseActivity() {
         binding.viewPagerSlider.clipToPadding = false
         binding.viewPagerSlider.clipChildren = false
         binding.viewPagerSlider.offscreenPageLimit = images.size
-        binding.viewPagerSlider.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        binding.viewPagerSlider.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_ALWAYS
 
         val compositePageTransform = CompositePageTransformer().apply {
             addTransformer(MarginPageTransformer(40))
 
         }
         binding.viewPagerSlider.setPageTransformer(compositePageTransform)
-        if (images.size > 1) {
+        if (images.size > 2) {
             binding.dotIndicator.visibility = View.VISIBLE
             binding.dotIndicator.attachTo(binding.viewPagerSlider)
         }

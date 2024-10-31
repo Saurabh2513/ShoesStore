@@ -38,8 +38,8 @@ class CreateAccountActivity : AppCompatActivity() {
         val passCon = binding.ConfPassTxt.text.toString()
 
 
-        // check pass
-        if (email.isBlank() || pass.isBlank() || passCon.isBlank()) {
+        // check password
+        if (userName.isBlank() ||email.isBlank() || pass.isBlank() || passCon.isBlank()) {
             Toast.makeText(this, "Email and Password can't be blank", Toast.LENGTH_SHORT).show()
             return
         }

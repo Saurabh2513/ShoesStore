@@ -23,14 +23,13 @@ class SliderAdapter(private var sliderItem: List<SliderModel>,
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SliderViewHolder {
         context = parent.context
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.slider_item_container, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.slider_item_container, parent, false)
         return SliderViewHolder(view)
     }
     override fun getItemCount(): Int = sliderItem.size
     override fun onBindViewHolder(holder: SliderViewHolder, position: Int) {
         holder.setImage(sliderItem[position], context)
-        if (position == sliderItem.lastIndex - 1) {
+        if (position == sliderItem.lastIndex) {
             viewPager2.post(runnable)
         }
     }

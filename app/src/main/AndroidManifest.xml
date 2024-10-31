@@ -16,24 +16,16 @@
             android:name=".view.bottomnavitem.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".view.bottomnav.ProfileActivity"
-            android:exported="false"
-            android:theme="@style/Theme.ShoesStore" />
-        <activity
-            android:name=".view.bottomnav.ExplorerActivity"
+            android:name=".view.bottomnavitem.CartActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.SplashScreenActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.bottomnav.CartActivity"
-            android:exported="false" />
         <activity
             android:name=".view.activity.LogInActivity"
             android:exported="false" />
@@ -49,16 +41,10 @@
         <activity
             android:name=".view.activity.IntroActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".view.activity.MainActivity"
             android:exported="true" />
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

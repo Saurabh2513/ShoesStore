@@ -38,7 +38,9 @@ class LogInActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else
-                Toast.makeText(this, "Log In failed ", Toast.LENGTH_SHORT).show()
+             intent = Intent(this@LogInActivity, MainActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(this, "Log In failed ", Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.shoesstore.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
@@ -12,7 +13,7 @@ import com.example.shoesstore.R
 import com.example.shoesstore.databinding.ViewholderBrandBinding
 import com.example.shoesstore.model.BrandModel
 
-class BrandAdapter(val items: MutableList<BrandModel>) :
+class BrandAdapter(private val items: MutableList<BrandModel>) :
     RecyclerView.Adapter<BrandAdapter.ViewHolder>() {
     private var selectedPosition = -1
     private var lastSelectedPosition = -1
@@ -22,13 +23,13 @@ class BrandAdapter(val items: MutableList<BrandModel>) :
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BrandAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
         val binding = ViewholderBrandBinding.inflate(LayoutInflater.from(context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: BrandAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val item = items[position]
         holder.binding.title.text = item.title
         Glide.with(holder.itemView.context).load(item.picUrl).into(holder.binding.pic)
